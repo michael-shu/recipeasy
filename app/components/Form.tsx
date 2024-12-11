@@ -27,7 +27,6 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
   const handleSubmit = () => {
     console.log(selectedIngredients);
     console.log(selectedCuisines);
-    
   }
 
   return (

@@ -1,4 +1,5 @@
 // pages/api/chatgpt
+/*
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
@@ -29,4 +30,4 @@ export const GET = async (req :NextRequest, res:NextResponse) => {
 
     res.json();
 
-}
+}*/
