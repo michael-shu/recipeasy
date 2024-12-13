@@ -44,7 +44,7 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
     setLoading(true);
     //needed since this is client side
 
-    const url = process.env.BASE_URL || "http://localhost:3000";
+    const url = process.env.BASE_URL;
 
     const res = await fetch(url + "/api/chatgpt",
       {
