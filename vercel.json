@@ -1,7 +1,7 @@
 {
     "functions": {
       "api/chatgpt/route.js": {
-        "maxDuration": 99999
+        "maxDuration": 60
       }
     }
   }

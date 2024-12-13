@@ -145,22 +145,7 @@ export const POST = async (req) => {
         instructions: assistantPromptInstruction,
         tools: [
             { "type": "code_interpreter" },
-            {
-                "type": "function",
-                "function": {
-                    "name": "tavily_search",
-                    "description": "Get information on recent events from the web.",
-                    "parameters": {
-                        "type": "object",
-                        "properties": {
-                            "query": { 
-                                "type": "string", 
-                                "description": "The search query to use. For example: 'Latest news on Nvidia stock performance'" },
-                        },
-                        "required": ["query"]
-                    }
-                }
-            }
+           
         ],
         model: "gpt-4o",
     });
