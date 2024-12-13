@@ -44,9 +44,9 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
     setLoading(true);
     //needed since this is client side
 
-    const url = process.env.BASE_URL;
+    const url = "https://recipeasy-zeta.vercel.app/";
 
-    const res = await fetch(url + "/api/chatgpt",
+    const res = await fetch(url + "api/chatgpt",
       {
         method: "POST",
         body: JSON.stringify({ "ingredients": selectedIngredients, "cuisines": selectedCuisines })
