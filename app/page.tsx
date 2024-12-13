@@ -13,7 +13,7 @@ export default function Home() {
         </p>
         <Link href="/form" className="inline-block px-6 py-3
          bg-red-500 text-white font-bold rounded-lg shadow-lg transform transition hover:scale-105 hover:bg-red-600">
-            Let&apos;s Get Started
+            Click Here to Get Started
         </Link>
       </div>
     </div>
