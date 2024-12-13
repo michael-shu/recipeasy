@@ -1,4 +1,5 @@
 // pages/api/chatgpt
+export const maxDuration = 60;
 import {NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
@@ -43,7 +44,7 @@ async function waitForRunCompletion(threadId, runId) {
     while (true) {
         await new Promise(resolve => setTimeout(resolve, 1000));
         const run = await client.beta.threads.runs.retrieve(threadId, runId);
-        console.log(`Current run status: ${run.status}`);
+        //console.log(`Current run status: ${run.status}`);
         if (['completed', 'failed', 'requires_action'].includes(run.status)) {
             return run;
         }
@@ -82,7 +83,7 @@ async function returnMessagesFromThread(threadId) {
     const messagesList = await client.beta.threads.messages.list(threadId);
     const most_recent_message = messagesList.body.data[0];
 
-    console.info("this is the most recent message deconstructed: \n", most_recent_message.content[0].text.value);
+    //console.info("this is the most recent message deconstructed: ", most_recent_message.content[0].text.value);
     let mostRecentMessageText = '';
     if (most_recent_message && Array.isArray(most_recent_message.content)) {
         mostRecentMessageText = most_recent_message.content
@@ -145,6 +146,22 @@ export const POST = async (req) => {
         instructions: assistantPromptInstruction,
         tools: [
             { "type": "code_interpreter" },
+            {
+                "type": "function",
+                "function": {
+                    "name": "tavily_search",
+                    "description": "Get information on recent events from the web.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "query": { 
+                                "type": "string", 
+                                "description": "The search query to use. For example: 'Latest news on Nvidia stock performance'" },
+                        },
+                        "required": ["query"]
+                    }
+                }
+            }
         ],
         model: "gpt-4o",
     });
@@ -187,9 +204,9 @@ export const POST = async (req) => {
                 console.error(completedRun.error);
                 continue;
             } else if (completedRun.status === 'requires_action') {
-                console.info("These are the tool calls required", completedRun.required_action.submit_tool_outputs.tool_calls);
+                console.info("These are the tool calls required I think", completedRun.required_action.submit_tool_outputs.tool_calls);
                 await submitToolOutputs(thread.id, completedRun.id, completedRun.required_action.submit_tool_outputs.tool_calls);
-                console.info("ok, we just finished submitting tool output");
+                console.info("ok, we just finished submitting tool output I think");
                 await waitForRunCompletion(thread.id, completedRun.id);
             }
         } catch (e) {
