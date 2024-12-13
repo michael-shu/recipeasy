@@ -145,7 +145,6 @@ export const POST = async (req) => {
         instructions: assistantPromptInstruction,
         tools: [
             { "type": "code_interpreter" },
-           
         ],
         model: "gpt-4o",
     });
