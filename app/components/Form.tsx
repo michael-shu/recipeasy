@@ -1,7 +1,5 @@
 'use client';
 import { useState } from "react";
-//import Ingredients from './Ingredients';
-//import Cuisines from './Cuisines';
 import React from 'react';
 import FormSection from './FormSection';
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,8 +14,13 @@ type recipe = {
 
 const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: string[] }) => {
 
+  //state to pass down to child components, so that on save, we can store the changed items in Form
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
   const [selectedCuisines, setSelectedCuisines] = useState<string[]>([]);
+
+  const [step, setStep] = useState(0);
+
+
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -44,8 +47,8 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
     setLoading(true);
     //needed since this is client side
 
-    const url = "https://recipeasy-zeta.vercel.app/";
-    //const url = "http://localhost:3000/";
+    //const url = "https://recipeasy-zeta.vercel.app/";
+    const url = "http://localhost:3000/";
 
     const res = await fetch(url + "api/chatgpt",
       {
@@ -76,15 +79,30 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
   }
 
   return (
-    <div className="flex flex-col items-center justify-center text-center bg-gray-100">
-      <div className="shadow-lg rounded-lg p-6 w-full max-w-6xl">
+    <div className="flex flex-row justify-center place-self-center m-5 rounded-xl p-10 bg-gray-100 w-11/12">
+      <div className="flex flex-col w-1/4 text-gray-700">
+        <div className="text-2xl font-bold mb-4">Recipeasy</div>
+
+        <p className="text-gray-700 text-sm mb-6">
+          Recipeasy is an AI-powered tool to generate recipes based on your preferences, ingredients, and moods.
+        </p>
+
+        <div className="flex flex-col gap-4 w-4/6 self-center">
+          <button onClick={() => setStep(0)}className="hover:bg-gray-300 py-2 px-4 rounded">
+            Input Ingredients
+          </button>
+          <button onClick={() => setStep(1)} className="hover:bg-gray-300 py-2 px-4 rounded">
+            Select Cuisines
+          </button>
+        </div>
+      </div>
+
+      <div className="text-center flex flex-col shadow-lg rounded-lg p-6 w-full max-w-6xl">
 
         {!submitted &&
           <div className="mb-4 space-y-4">
-            {/*step === 0 && <Ingredients ingredients={ingredients} setIngredients={setSelectedIngredients}/>*/}
-            <FormSection name={"ingredient"} setItems={setSelectedIngredients} items={ingredients} />
-            {/*step === 1 && <Cuisines cuisines={cuisines} setCuisines={setSelectedCuisines}/>*/}
-            <FormSection name={"cuisine"} setItems={setSelectedCuisines} items={cuisines} />
+            {step === 0 && <FormSection name={"ingredient"} setItems={setSelectedIngredients} items={ingredients}/>}
+            {step === 1 && <FormSection name={"cuisine"} setItems={setSelectedCuisines} items={cuisines} />}
 
             <ToastContainer
             />

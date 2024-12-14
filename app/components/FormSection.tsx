@@ -61,21 +61,10 @@ const Input = ({name, items, setItems}: {name:string,  items: string[], setItems
                         type="text"
                         value={itemFilterValue}
                         onChange={filterItems}
-                        placeholder="Type to search items"
+                        placeholder={"Type to search " + items.length + " " + name + "s"}
                         className="flex-1 focus:outline-none text-black"
                     />
                 </div>
-
-                <button
-                    onClick={handleSubmit}
-                    type="submit"
-                    className="w-full px-6 py-3 rounded-lg text-white font-bold shadow-lg 
-                        bg-gradient-to-r from-[#ff4e50] to-[#fc913a] hover:from-[#fc913a] hover:to-[#f9d423] 
-                        transition-transform transform hover:scale-105 active:scale-95 
-                        focus:outline-none focus:ring-4 focus:ring-[#f9d423]/50 mb-5 justify-self-center"
-                >
-                    Save {name}s
-                </button>
 
                 <div className="grid grid-cols-3 gap-2 mb-4">
                     {items.filter((item) => item.includes(itemFilterValue))
@@ -100,16 +89,18 @@ const Input = ({name, items, setItems}: {name:string,  items: string[], setItems
                                 </button>
                             );
                         })}
-                    
-                        <button
-                            className="px-6 py-3 rounded-full text-white font-semibold shadow-md 
-                               transition-transform transform hover:scale-105 active:scale-95 
-                               bg-gradient-to-r from-[#f3722c] to-[#f8961e] hover:from-[#f9844a] hover:to-[#f9c74f] 
-                               focus:outline-none focus:ring-4 focus:ring-[#f9c74f]/50"
-                        >
-                            And {items.length} More
-                        </button>
+                        
                 </div>
+                <button
+                    onClick={handleSubmit}
+                    type="submit"
+                    className="w-full px-6 py-3 rounded-lg text-white font-bold shadow-lg 
+                        bg-gradient-to-r from-[#ff4e50] to-[#fc913a] hover:from-[#fc913a] hover:to-[#f9d423] 
+                        transition-transform transform hover:scale-105 active:scale-95 
+                        focus:outline-none focus:ring-4 focus:ring-[#f9d423]/50 mb-5 justify-self-center"
+                >
+                    Save {name}s
+                </button>
             </form>
         </div>
     );
