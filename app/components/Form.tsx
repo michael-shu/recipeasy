@@ -28,6 +28,10 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
 
   const [recipes, setRecipes] = useState<recipe[]>([]);
 
+  const nextStep = () => {
+    setStep(step + 1);
+  }
+
   const handleSubmit = async () => {
 
     if (selectedIngredients.length === 0 || selectedCuisines.length === 0) {
@@ -89,10 +93,13 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
 
         <div className="flex flex-col gap-4 w-4/6 self-center">
           <button onClick={() => setStep(0)}className="hover:bg-gray-300 py-2 px-4 rounded">
-            Input Ingredients
+            Ingredients
           </button>
           <button onClick={() => setStep(1)} className="hover:bg-gray-300 py-2 px-4 rounded">
-            Select Cuisines
+            Cuisines
+          </button>
+          <button onClick={() => setStep(2)} className="hover:bg-gray-300 py-2 px-4 rounded">
+            Verify Request
           </button>
         </div>
       </div>
@@ -101,12 +108,35 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
 
         {!submitted &&
           <div className="mb-4 space-y-4">
-            {step === 0 && <FormSection name={"ingredient"} setItems={setSelectedIngredients} items={ingredients}/>}
-            {step === 1 && <FormSection name={"cuisine"} setItems={setSelectedCuisines} items={cuisines} />}
-
+            {step === 0 && <FormSection name={"ingredient"} setCurrItems={setSelectedIngredients} currItems={selectedIngredients} totalItems={ingredients} nextStep={nextStep}/>}
+            {step === 1 && <FormSection name={"cuisine"} setCurrItems={setSelectedCuisines} currItems={selectedCuisines} totalItems={cuisines} nextStep={nextStep}/>}
+            {step === 2 && <div className = "grid grid-cols-2">
+              <div className=""> 
+                <h1>
+                  Selected Ingredients
+                </h1>
+                {selectedIngredients.map((ingredient, index) => {
+                  return (
+                  <div key={index}>
+                    {ingredient}
+                    </div>
+                  )})}
+              </div>
+              <div className=""> 
+                <h1>
+                  Selected Cuisines
+                </h1>
+                {selectedCuisines.map((ingredient,index) => {
+                  return (
+                    <div key={index}>
+                      {ingredient}
+                      </div>
+                  )})}
+                </div>              
+              </div>}
             <ToastContainer
             />
-            <button
+            {step === 2 && <button
               onClick={handleSubmit}
               className="px-6 py-3 bg-slate-600
               text-white font-bold rounded-lg shadow-lg
@@ -116,6 +146,7 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
             >
               Let&apos;s find some recipes!
             </button>
+}
 
           </div>
         }

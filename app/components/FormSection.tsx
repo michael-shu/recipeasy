@@ -1,13 +1,13 @@
 'use client';
 import { useState } from "react";
 
-const Input = ({name, items, setItems}: {name:string,  items: string[], setItems: React.Dispatch<React.SetStateAction<string[]>>}) => {
+const Input = ({name, totalItems, currItems, setCurrItems, nextStep}: {name:string, currItems:string[],  totalItems: string[], setCurrItems: React.Dispatch<React.SetStateAction<string[]>>, nextStep: ()=>void}) => {
 
     //Value to filter items
     const [itemFilterValue, setItemFilterValue] = useState("");
 
     //The items that have been clicked by the user
-    const [selectedItems, setSelectedItems] = useState<string[]>([]);
+    const [selectedItems, setSelectedItems] = useState<string[]>(currItems);
 
     const handleAddItem = (item: string) => {
         if (!selectedItems.includes(item)) {
@@ -25,7 +25,8 @@ const Input = ({name, items, setItems}: {name:string,  items: string[], setItems
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setItems(selectedItems);
+        setCurrItems(selectedItems);
+        nextStep();
     };
 
     const colors = ['#f94144', '#f3722c', '#f8961e', '#f9844a', '#f9c74f'];
@@ -61,13 +62,13 @@ const Input = ({name, items, setItems}: {name:string,  items: string[], setItems
                         type="text"
                         value={itemFilterValue}
                         onChange={filterItems}
-                        placeholder={"Type to search " + items.length + " " + name + "s"}
+                        placeholder={"Type to search " + totalItems.length + " " + name + "s"}
                         className="flex-1 focus:outline-none text-black"
                     />
                 </div>
 
                 <div className="grid grid-cols-3 gap-2 mb-4">
-                    {items.filter((item) => item.includes(itemFilterValue))
+                    {totalItems.filter((item) => item.includes(itemFilterValue))
                         .slice(0, 9)
                         .map((item, index) => {
                             return (
