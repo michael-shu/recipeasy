@@ -47,8 +47,8 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
     setLoading(true);
     //needed since this is client side
 
-    //const url = "https://recipeasy-zeta.vercel.app/";
-    const url = "http://localhost:3000/";
+    const url = "https://recipeasy-zeta.vercel.app/";
+    //const url = "http://localhost:3000/";
 
     const res = await fetch(url + "api/chatgpt",
       {
