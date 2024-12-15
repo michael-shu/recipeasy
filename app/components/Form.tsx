@@ -20,8 +20,6 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
 
   const [step, setStep] = useState(0);
 
-
-
   const [submitted, setSubmitted] = useState(false);
 
   const [loading, setLoading] = useState(false);
@@ -30,6 +28,14 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
 
   const nextStep = () => {
     setStep(step + 1);
+  }
+
+  const removeIngredient = (ingredient: string) => {
+    setSelectedIngredients(selectedIngredients.filter((item) => item !== ingredient));
+  }
+
+  const removeCuisine = (cuisine: string) => {
+    setSelectedCuisines(selectedCuisines.filter((item) => item !== cuisine));
   }
 
   const handleSubmit = async () => {
@@ -104,35 +110,60 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
         </div>
       </div>
 
-      <div className="text-center flex flex-col shadow-lg rounded-lg p-6 w-full max-w-6xl">
+      <div className="text-center flex flex-col shadow-lg rounded-lg p-6 w-full max-w-6xl bg-white">
 
         {!submitted &&
           <div className="mb-4 space-y-4">
             {step === 0 && <FormSection name={"ingredient"} setCurrItems={setSelectedIngredients} currItems={selectedIngredients} totalItems={ingredients} nextStep={nextStep}/>}
             {step === 1 && <FormSection name={"cuisine"} setCurrItems={setSelectedCuisines} currItems={selectedCuisines} totalItems={cuisines} nextStep={nextStep}/>}
             {step === 2 && <div className = "grid grid-cols-2">
-              <div className=""> 
-                <h1>
+              <div className="flex flex-col items-center"> 
+                <p className="text-3xl font-bold">
                   Selected Ingredients
-                </h1>
+                </p>
+                <div className="flex flex-row m-4">
                 {selectedIngredients.map((ingredient, index) => {
                   return (
-                  <div key={index}>
+                    <div
+                    key={index}
+                    className="flex items-center bg-orange-200 text-black px-3 py-1 rounded-full text-sm shadow-md"
+                >
                     {ingredient}
-                    </div>
+                    <button
+                        type="button"
+                        onClick={() => removeIngredient(ingredient)}
+                        className="ml-2 text-red-600 font-bold hover:text-red-800"
+                    >
+                        ×
+                    </button>
+                </div>
                   )})}
+                </div>
               </div>
-              <div className=""> 
-                <h1>
+
+              <div className="flex flex-col items-center"> 
+                <p className="text-3xl font-bold">
                   Selected Cuisines
-                </h1>
-                {selectedCuisines.map((ingredient,index) => {
+                </p>
+                <div className="flex flex-row">
+                {selectedCuisines.map((cuisine,index) => {
                   return (
-                    <div key={index}>
-                      {ingredient}
-                      </div>
+                    <div
+                    key={index}
+                    className="flex items-center bg-orange-200 text-black px-3 py-1 rounded-full text-sm shadow-md"
+                >
+                    {cuisine}
+                    <button
+                        type="button"
+                        onClick={() => removeCuisine(cuisine)}
+                        className="ml-2 text-red-600 font-bold hover:text-red-800"
+                    >
+                        ×
+                    </button>
+                </div>
                   )})}
-                </div>              
+              </div>  
+              </div>            
               </div>}
             <ToastContainer
             />
@@ -140,7 +171,7 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
               onClick={handleSubmit}
               className="px-6 py-3 bg-slate-600
               text-white font-bold rounded-lg shadow-lg
-              hover:scale-105
+              hover:scale-105 hover:text-black duration-300
                transition-transform transform active:scale-95 focus:outline-none
                 focus:ring-4 focus:ring-gray-700"
             >

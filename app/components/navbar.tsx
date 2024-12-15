@@ -1,26 +1,23 @@
 // components/Navbar.tsx
 import Link from "next/link";
+import { GiForkKnifeSpoon } from "react-icons/gi";
 
 const Navbar: React.FC = () => {
  
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-slate-50 shadow-md">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex justify-between h-16 items-center">
       {/* Logo */}
-      <div className="flex items-center">
-        <Link href="/" className="text-indigo-600 text-2xl font-bold hover:text-indigo-500">
+      <div className="flex">
+        <Link href="/" className="items-center flex flex-row text-purple-600 text-2xl font-bold hover:text-purple-700">
+          <GiForkKnifeSpoon/>
+        
           Recipeasy
         </Link>
       </div>
       {/* Links */}
       <div className="flex space-x-6">
-        <Link href="/about" className="text-gray-700 hover:text-indigo-600 font-medium">
-          About
-        </Link>
-        <Link href="/services" className="text-gray-700 hover:text-indigo-600 font-medium">
-          Services
-        </Link>
         <Link href="/contact" className="text-gray-700 hover:text-indigo-600 font-medium">
           Contact
         </Link>
