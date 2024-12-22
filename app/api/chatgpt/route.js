@@ -39,6 +39,10 @@ const tavilySearch = async (query) => {
     }
 };
 
+const getHtml = async (url) => {
+
+}
+
 // Function to wait for a run to complete
 async function waitForRunCompletion(threadId, runId) {
     while (true) {
@@ -145,7 +149,16 @@ export const POST = async (req) => {
         name: "Recipe Distributor",
         instructions: assistantPromptInstruction,
         tools: [
-            { "type": "code_interpreter" },
+            { "type": "function",
+                "function": {
+                    "name": "getHtml",
+                    "description": "Pull html from a website for getting directions",
+                    "paramters": {
+                        
+                    }
+                }
+
+             },
             {
                 "type": "function",
                 "function": {

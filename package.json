@@ -9,8 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/supabase-adapter": "^1.7.4",
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.47.8",
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
     "framer-motion": "^11.13.5",
     "next": "15.0.4",
+    "next-auth": "^5.0.0-beta.25",
     "openai": "^4.76.1",
     "openfoodfacts-nodejs": "github:openfoodfacts/openfoodfacts-nodejs",
     "react": "^19.0.0",

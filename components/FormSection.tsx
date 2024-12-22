@@ -67,9 +67,8 @@ const Input = ({name, totalItems, currItems, setCurrItems, nextStep}: {name:stri
                     />
                 </div>
 
-                <div className="grid grid-cols-3 gap-2 mb-4">
+                <div className="grid grid-cols-3 gap-2 mb-4 h-72 overflow-y-scroll p-6">
                     {totalItems.filter((item) => item.includes(itemFilterValue))
-                        .slice(0, 9)
                         .map((item, index) => {
                             return (
                                 <button
