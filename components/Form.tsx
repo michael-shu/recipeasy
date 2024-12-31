@@ -7,16 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../app/loading';
 import { FaRegBookmark } from "react-icons/fa";
 import { createClient } from '@/utils/supabase/client';
-import axios from 'axios';
-let cheerio = require('cheerio');
-import OpenAI from 'openai';
-
 
 type recipe = {
   title: string,
   description: string,
   url: string
 };
+/*
 const data =
 {
   "recipes": [
@@ -46,7 +43,8 @@ const data =
       "url": "https://www.yellowblissroad.com/szechuan-shrimp-and-green-beans/"
     }
   ]
-};
+};*/
+
 
 const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: string[] }) => {
 
@@ -153,6 +151,8 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
       .from('users-to-recipes')
       .insert([{ user_id: user.id, recipe_id: recipeId }]);
 
+    console.log(relationData);
+
     if (relationError) {
       toast.update(id,
         {
@@ -182,18 +182,6 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
     }
   }
 
-  const getDirections = async (recipe: recipe) => {
-
-    axios.get(recipe.url)
-      .then((response) => {
-        if (response.status === 200) {
-          const html = response.data;
-          const $ = cheerio.load(html);
-          console.log($);
-        }
-      }, (error) => console.log(error));
-      
-  }
 
   if (loading) {
     return <Loading />
@@ -326,7 +314,7 @@ const Form = ({ ingredients, cuisines }: { ingredients: string[], cuisines: stri
                         Save <FaRegBookmark className="inline text-2xl" />
                       </button>
                       <button
-                        onClick={() => getDirections(recipe)}
+                        onClick={() => {console.log("we gotta put something here")}}
                         className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition-colors">
                         Directions
                       </button>

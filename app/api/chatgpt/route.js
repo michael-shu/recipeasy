@@ -39,9 +39,10 @@ const tavilySearch = async (query) => {
     }
 };
 
+/*
 const getHtml = async (url) => {
 
-}
+}*/
 
 // Function to wait for a run to complete
 async function waitForRunCompletion(threadId, runId) {
