@@ -1,5 +1,7 @@
 # Recipeasy - AI Recipe Recommendation App
+<a href="https://recipeasy-zeta.vercel.app/">
 <img src="./Recipeasy.png">
+</a>
 
 Recipeasy is an AI-powered recipe recommendation app that suggests personalized recipes based on your saved preferences. It allows users to save their favorite recipes and uses that data to generate better future recommendations.
 
@@ -12,49 +14,10 @@ Recipeasy is an AI-powered recipe recommendation app that suggests personalized 
 
 ## Tech Stack
 
-- **Frontend**: HTML, CSS, JavaScript (TailwindCSS)
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB / Firebase (or any other database you plan to use)
-- **AI/Recommendation Engine**: Python (using libraries like TensorFlow or Scikit-Learn for AI/ML if applicable)
-
-## Installation
-
-### Prerequisites
-
-- Node.js
-- NPM/Yarn
-- MongoDB or any database of your choice (for storing user data and recipes)
-
-### Steps
-
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/recipeasy.git
-    ```
-
-2. Navigate into the project directory:
-    ```bash
-    cd recipeasy
-    ```
-
-3. Install dependencies:
-    ```bash
-    npm install
-    ```
-
-4. Set up environment variables (e.g., database credentials, API keys):
-    - Create a `.env` file in the root directory
-    - Add necessary configuration (example for MongoDB):
-        ```
-        DB_URI=mongodb://localhost:27017/recipeasy
-        ```
-
-5. Start the server:
-    ```bash
-    npm start
-    ```
-
-6. Open the app in your browser at `http://localhost:3000`
+- **Frontend**: React/NextJS, 
+- **Backend**: NextJS pages router
+- **Database**: Supabase
+- **AI/Recommendation Engine**: OpenAI assisstants API
 
 ## How It Works
 
