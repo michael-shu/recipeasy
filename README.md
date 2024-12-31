@@ -3,7 +3,7 @@
 <img src="./Recipeasy.png">
 </a>
 
-Recipeasy is an AI-powered recipe recommendation app that suggests personalized recipes based on your saved preferences. It allows users to save their favorite recipes and uses that data to generate better future recommendations.
+<a href="https://recipeasy-zeta.vercel.app/">Recipeasy</a> is an AI-powered recipe recommendation app that suggests personalized recipes based on your saved preferences. It allows users to save their favorite recipes and uses that data to generate better future recommendations.
 
 ## Features
 
