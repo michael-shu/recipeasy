@@ -1,5 +1,5 @@
 # Recipeasy - AI Recipe Recommendation App
-[Recipeasy.png]
+[<img src="./recipeasy.png">]
 
 Recipeasy is an AI-powered recipe recommendation app that suggests personalized recipes based on your saved preferences. It allows users to save their favorite recipes and uses that data to generate better future recommendations.
 
