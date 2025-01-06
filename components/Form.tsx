@@ -11,7 +11,8 @@ import { createClient } from '@/utils/supabase/client';
 type recipe = {
   title: string,
   description: string,
-  url: string
+  url: string,
+  directions: string
 };
 /*
 const data =

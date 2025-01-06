@@ -2,8 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import Contact from './Contact';
 
 const page = () => {
+
   return (
     <div className="flex items-center justify-center p-6">
       <div className="w-full max-w-2xl bg-slate-100 rounded-xl shadow-lg p-8 relative">
@@ -25,52 +27,9 @@ const page = () => {
           </Link>
         </div>
 
-        <form className="mt-8 space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-gray-700 font-medium mb-1">
-              Your Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              placeholder="Enter your name"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-purple-300"
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-gray-700 font-medium mb-1">
-              Your Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter your email"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-purple-300"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-gray-700 font-medium mb-1"
-            >
-              Your Message
-            </label>
-            <textarea
-              id="message"
-              placeholder="Write your message here..."
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-purple-300"
-            ></textarea>
-          </div>
+        <Contact/>
 
-          <div className="text-center">
-            <button
-              type="submit"
-              className="w-fit p-3 bg-black text-white rounded-lg py-2 hover:text-black hover:bg-white transition duration-300 shadow-md"
-            >
-              Send Message
-            </button>
-          </div>
-        </form>
+        
 
         <div className="mt-8 text-center">
           <p className="text-gray-600">Connect with me on:</p>
