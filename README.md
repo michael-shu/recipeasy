@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Recipeasy - AI Recipe Recommendation App
+<a href="https://recipeasy-zeta.vercel.app/">
+<img src="./Recipeasy.png">
+</a>
 
-## Getting Started
+<a href="https://recipeasy-zeta.vercel.app/">Recipeasy</a> is an AI-powered recipe recommendation app that suggests personalized recipes based on your saved preferences. It allows users to save their favorite recipes and uses that data to generate better future recommendations.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **AI-Powered Recommendations**: Get recipe suggestions based on your taste preferences and past saved recipes.
+- **Save Recipes**: Save your favorite recipes to your profile for future access.
+- **Personalized Suggestions**: The more you interact with the app, the more accurate the recommendations will become.
+- **User Profile**: Each user has their own profile that stores saved recipes.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: React/NextJS, 
+- **Backend**: NextJS pages router
+- **Database**: Supabase
+- **AI/Recommendation Engine**: OpenAI assisstants API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How It Works
 
-## Learn More
+1. **User Registration**: Users can register and log in to create their profiles.
+2. **Recipe Recommendations**: Once logged in, users can see AI-powered recipe recommendations based on their preferences.
+3. **Save Recipes**: Users can save their favorite recipes to their profile.
+4. **Profile Page**: Users can view their saved recipes in their profile and continue receiving personalized suggestions.
 
-To learn more about Next.js, take a look at the following resources:
+## AI Recommendation Engine
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The app uses an AI-based recommendation engine that takes into account:
+- **User Preferences**: What types of recipes a user has saved before.
+- **Recipe Features**: Ingredients, cuisine, cooking difficulty, etc.
+- **AI Model**: The AI model suggests recipes based on user behavior and recipe features. The model learns over time and becomes more accurate with each interaction.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Future Features
 
-## Deploy on Vercel
+- Integration with third-party recipe APIs for a broader recipe database.
+- Nutrition information for each recipe.
+- Meal planning feature to suggest recipes based on dietary needs and preferences.
+- Mobile app for Recipeasy.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+We welcome contributions! If you’d like to contribute, feel free to fork the repository and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Contact
+
+If you have any questions or feedback, feel free to reach out at [your-email@example.com].
