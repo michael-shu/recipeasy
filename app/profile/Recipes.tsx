@@ -10,7 +10,7 @@ type recipe = {
 const Recipes = ({recipes} : {recipes: recipe[]}) => {
   return (
     <div className="w-full m-10 p-10 bg-white rounded-lg shadow-md">
-        <h2 className="text-xl font-bold text-gray-700 mb-4">Saved Recipes</h2>
+        <h2 className="text-xl font-bold text-gray-700 mb-4">Your Recipes</h2>
         {recipes && recipes.length > 0 ? (
           <ul className="space-y-4">
             {recipes.map((recipe, index) => (

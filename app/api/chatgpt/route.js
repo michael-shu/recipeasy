@@ -150,16 +150,6 @@ export const POST = async (req) => {
         name: "Recipe Distributor",
         instructions: assistantPromptInstruction,
         tools: [
-            { "type": "function",
-                "function": {
-                    "name": "getHtml",
-                    "description": "Pull html from a website for getting directions",
-                    "paramters": {
-                        
-                    }
-                }
-
-             },
             {
                 "type": "function",
                 "function": {
