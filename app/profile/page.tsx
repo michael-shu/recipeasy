@@ -3,13 +3,7 @@ import { createClient } from "@/utils/supabase/server";
 import Profile from './Profile';
 import Recipes from './Recipes';
 import { User } from '@supabase/auth-js'; // Import Supabase's User type
-
-type recipe = {
-  title: string,
-  description: string,
-  url: string,
-  directions: string
-};
+import { recipe } from '@/utils/global.types';
 
 type GetUserResult = {
   user?: User;
@@ -62,11 +56,9 @@ const getUser = async (): Promise<GetUserResult> => {
   return { user, recipes };
 };
 
-
 export default async function PrivatePage() {
 
   const data = await getUser();
-  console.log(data);
 
   if (data.user === undefined) {
     return <div>There was an error fetching your data</div>;
@@ -82,7 +74,7 @@ export default async function PrivatePage() {
       )}
 
       {data.recipes ? (
-        <Recipes recipes={data.recipes} />
+        <Recipes user_id={data.user.id} recipes={data.recipes} />
       ) : (
         <div>Error: Email is missing for the user.</div>
       )}

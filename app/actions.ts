@@ -1,5 +1,4 @@
 "use server";
-
 import { encodedRedirect } from "@/utils/utils";
 import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
@@ -147,8 +146,6 @@ export const signOutAction = async () => {
 
 export const submitContactForm = async (prevState: unknown, formData: FormData) => {
 
-  //console.info("This is form data", formData);
-
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const message = formData.get("message") as string;
@@ -259,12 +256,12 @@ export const submitContactForm = async (prevState: unknown, formData: FormData) 
 `
     });
 
-    return {success: "Your email has been sent successfully! I'll get back to you as soon as I can."};
-  } catch (e : unknown) {
+    return { success: "Your email has been sent successfully! I'll get back to you as soon as I can." };
+  } catch (e: unknown) {
     const error = e as Error; // Type assertion to `Error`
     console.error(error.message); // Optional logging for debugging
 
-    return {error: "Sorry, something went wrong. Please try contacting me in another way; through my website, LinkedIn or Github."};
+    return { error: "Sorry, something went wrong. Please try contacting me in another way; through my website, LinkedIn or Github." };
   }
 }
 
